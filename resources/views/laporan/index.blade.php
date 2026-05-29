@@ -2,11 +2,11 @@
 
 @section('content')
 
-<h2 class="mb-4 fw-bold">📊 Laporan & Prediksi Stok</h2>
+<h2 class="mb-4 fw-bold">Laporan & Prediksi Stok</h2>
 
 <div class="card p-4">
 
-    <h5 class="fw-semibold mb-4">📦 Prediksi Stok Per Produk</h5>
+    <h5 class="fw-semibold mb-4">Prediksi Stok Per Produk</h5>
 
     <table class="table align-middle">
 

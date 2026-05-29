@@ -2,7 +2,9 @@
 
 @section('content')
 
-<h2 class="mb-4 fw-bold">📊 Dashboard</h2>
+<div class="mb-4">
+    <h3 class="fw-bold mb-1">Dashboard</h3>
+</div>
 
 <div class="row g-3">
 
@@ -12,7 +14,7 @@
                 <h3>{{ $total }}</h3>
                 <small>Total Produk</small>
             </div>
-            <div class="bg-success text-white p-3 rounded">📦</div>
+            <div style="font-size:38px;">📦</div>
         </div>
     </div>
 
@@ -22,7 +24,7 @@
                 <h3>{{ $stok_minim }}</h3>
                 <small>Stok Menipis</small>
             </div>
-            <div class="bg-warning text-white p-3 rounded">⚠️</div>
+            <div style="font-size:38px;">⚠️</div>
         </div>
     </div>
 
@@ -32,7 +34,7 @@
                 <h3>{{ $hampir_exp }}</h3>
                 <small>Hampir Kadaluarsa</small>
             </div>
-            <div class="bg-danger text-white p-3 rounded">⏰</div>
+          <div style="font-size:38px;">⏰</div>
         </div>
     </div>
 
@@ -42,7 +44,7 @@
                 <h3>{{ $transaksi_bulan_ini }}</h3>
                 <small>Transaksi Bulan Ini</small>
             </div>
-            <div class="bg-primary text-white p-3 rounded">💰</div>
+            <div style="font-size:38px;">💰</div>
         </div>
     </div>
 

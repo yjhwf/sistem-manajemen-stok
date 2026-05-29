@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h2 class="mb-4 fw-bold">📊 Transaksi</h2>
+<h2 class="mb-4 fw-bold">Transaksi</h2>
 
 <div class="card p-4" style="border-radius:16px;">
 
@@ -118,25 +118,5 @@
 
 </div>
 
-<script>
-document.getElementById('searchInput').addEventListener('keyup', function() {
-
-    let value = this.value.toLowerCase();
-    let rows = document.querySelectorAll('#tableBody tr');
-
-    rows.forEach(row => {
-
-        let text = row.innerText.toLowerCase();
-
-        if(text.includes(value)){
-            row.style.display = '';
-        } else {
-            row.style.display = 'none';
-        }
-
-    });
-
-});
-</script>
 
 @endsection

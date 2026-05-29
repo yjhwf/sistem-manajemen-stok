@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h2 class="mb-4 fw-bold">📦 Manajemen Produk</h2>
+<h2 class="mb-4 fw-bold"> Manajemen Produk</h2>
 
 <div class="card p-4" style="border-radius:16px;">
 
