@@ -20,10 +20,6 @@
             <input type="date" name="tanggal" class="form-control" value="{{ $transaksi->tanggal }}">
         </div>
 
-        <div class="mb-3">
-            <label class="form-label">Supplier</label>
-            <input type="text" name="supplier" class="form-control" value="{{ $transaksi->supplier }}">
-        </div>
 
         <div class="mb-3">
             <label class="form-label">Produk</label>
