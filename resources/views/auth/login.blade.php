@@ -2,31 +2,39 @@
 
 @section('content')
 
-<div class="d-flex justify-content-center align-items-center" style="height:80vh;">
+<div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
 
-<div class="card p-4" style="width:350px;">
+    <div class="auth-card">
 
-    <h4 class="mb-3 text-center">Login</h4>
+        <div class="auth-logo">🛒</div>
+        <div class="auth-title">Selamat Datang</div>
+        <div class="auth-sub">Masuk ke Sistem Manajemen Stok</div>
 
-    @if(session('error'))
-        <div class="alert alert-danger">{{ session('error') }}</div>
-    @endif
+        @if(session('error'))
+            <div class="alert alert-danger mb-3">{{ session('error') }}</div>
+        @endif
 
-    <form method="POST" action="/login">
-        @csrf
+        <form method="POST" action="/login">
+            @csrf
 
-        <input type="email" name="email" class="form-control mb-3" placeholder="Email" required>
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" name="email" class="form-control" placeholder="nama@email.com" required>
+            </div>
 
-        <input type="password" name="password" class="form-control mb-3" placeholder="Password" required>
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" placeholder="••••••••" required>
+            </div>
 
-        <button class="btn btn-success w-100">Login</button>
-    </form>
+            <button type="submit" class="btn-auth mt-1">Login</button>
+        </form>
 
-    <div class="text-center mt-3">
-        <a href="/register">Belum punya akun?</a>
+        <p class="auth-link">
+            Belum punya akun? <a href="/register">Daftar sekarang</a>
+        </p>
+
     </div>
-
-</div>
 
 </div>
 

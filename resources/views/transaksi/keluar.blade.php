@@ -2,125 +2,85 @@
 
 @section('content')
 
-<h2 class="mb-4 fw-bold">Transaksi</h2>
-
-<div class="card p-4" style="border-radius:16px;">
-
-    <!-- TAB -->
-    <div class="d-flex gap-4 mb-4 border-bottom pb-2">
-
-        <!-- BARANG MASUK -->
-        <a href="/transaksi" style="text-decoration:none;">
-            <div class="text-muted">
-                Barang Masuk
-            </div>
-        </a>
-
-        <!-- BARANG KELUAR (ACTIVE) -->
-        <a href="/transaksi/keluar" style="text-decoration:none;">
-            <div style="border-bottom:3px solid #198754; padding-bottom:6px; font-weight:600; color:#198754;">
-                Barang Keluar
-            </div>
-        </a>
-
-    </div>
-
-    <!-- HEADER -->
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <h5 class="fw-semibold">📤 Riwayat Barang Keluar</h5>
-
-        <a href="/transaksi/keluar/create" class="btn btn-success shadow-sm">
-            + Input Barang Keluar
-        </a>
-    </div>
-
-    <!-- TABLE -->
-     <div class="mb-3">
-    <input type="text"
-           id="searchInput"
-           class="form-control"
-           placeholder="🔍 Cari produk...">
+{{-- TABS --}}
+<div class="tab-nav">
+    <a href="/transaksi">Barang Masuk</a>
+    <a href="/transaksi/keluar" class="active">Barang Keluar</a>
 </div>
 
-    <table class="table align-middle">
+{{-- HEADER --}}
+<div class="section-head">
+    <h5>
+        <i class="bi bi-box-arrow-up-right me-1" style="color:#16a34a;"></i>
+        Riwayat Barang Keluar
+    </h5>
+    <div class="d-flex gap-2 align-items-center">
+        <div class="search-wrap">
+            <i class="bi bi-search"></i>
+            <input type="text" id="searchInput" class="form-control" placeholder="Cari produk...">
+        </div>
+        <a href="/transaksi/keluar/create" class="btn btn-success d-flex align-items-center gap-1">
+            <i class="bi bi-plus-lg"></i> Input Barang Keluar
+        </a>
+    </div>
+</div>
 
-        <thead style="background:#f3f7f5;">
+{{-- TABLE --}}
+<div class="table-wrap">
+    <table class="table">
+        <thead>
             <tr>
-                <th>TANGGAL</th>
-                <th>NO. TRANSAKSI</th>
-                <th>PRODUK</th>
-                <th>JUMLAH</th>
-                <th style="text-align:center; width:90px;">AKSI</th>
+                <th>Tanggal</th>
+                <th>No. Transaksi</th>
+                <th>Produk</th>
+                <th>Jumlah</th>
+                <th style="text-align:center;">Aksi</th>
             </tr>
         </thead>
-
         <tbody id="tableBody">
 
         @forelse($transaksis as $trx)
-        <tr>
+            <tr>
+                <td>{{ \Carbon\Carbon::parse($trx->tanggal)->format('d M Y') }}</td>
+                <td class="text-code">{{ $trx->no_transaksi }}</td>
+                <td style="font-weight:600;">{{ $trx->nama_produk }}</td>
+                <td>{{ $trx->jumlah }} {{ $trx->satuan }}</td>
 
-            <td>{{ \Carbon\Carbon::parse($trx->tanggal)->format('d M Y') }}</td>
-            <td>{{ $trx->no_transaksi }}</td>
-            <td class="fw-semibold">{{ $trx->nama_produk }}</td>
-            <td>{{ $trx->jumlah }} {{ $trx->satuan }}</td>
-
-            <!-- AKSI -->
-            <td style="text-align:center; vertical-align:middle;">
-                <div style="display:flex; justify-content:center; gap:12px;">
-
-                    <!-- EDIT -->
-                    <a href="/transaksi/{{ $trx->id }}/edit">
-                        <i class="bi bi-pencil text-warning" style="font-size:18px;"></i>
-                    </a>
-
-                    <!-- DELETE -->
-                    <form action="/transaksi/{{ $trx->id }}" method="POST"
-                          onsubmit="confirmDelete(event)">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit"
-                                style="border:none; background:none; padding:0;">
-                            <i class="bi bi-trash text-danger" style="font-size:18px;"></i>
-                        </button>
-                    </form>
-
-                </div>
-            </td>
-
-        </tr>
+                <td style="text-align:center;">
+                    <div class="d-flex justify-content-center gap-2">
+                        <a href="/transaksi/{{ $trx->id }}/edit" class="btn-icon btn-edit">
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                        <form action="/transaksi/{{ $trx->id }}" method="POST" onsubmit="confirmDelete(event)">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn-icon btn-trash">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
 
         @empty
-        <tr>
-            <td colspan="5" class="text-center text-muted">
-                Belum ada data barang keluar
-            </td>
-        </tr>
+            <tr>
+                <td colspan="5" class="text-center text-muted py-4">
+                    <i class="bi bi-inbox" style="font-size:24px; display:block; margin-bottom:6px;"></i>
+                    Belum ada data barang keluar
+                </td>
+            </tr>
         @endforelse
 
         </tbody>
-
     </table>
-
 </div>
 
 <script>
-document.getElementById('searchInput').addEventListener('keyup', function() {
-
+document.getElementById('searchInput').addEventListener('keyup', function () {
     let value = this.value.toLowerCase();
-    let rows = document.querySelectorAll('#tableBody tr');
-
-    rows.forEach(row => {
-
-        let text = row.innerText.toLowerCase();
-
-        if(text.includes(value)){
-            row.style.display = '';
-        } else {
-            row.style.display = 'none';
-        }
-
+    document.querySelectorAll('#tableBody tr').forEach(row => {
+        row.style.display = row.innerText.toLowerCase().includes(value) ? '' : 'none';
     });
-
 });
 </script>
 
