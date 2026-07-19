@@ -500,6 +500,9 @@
             <a href="/laporan" class="menu-link {{ request()->is('laporan') ? 'active' : '' }}">
                 <i class="bi bi-bar-chart-line"></i> Laporan
             </a>
+            <a href="/prediksi" class="menu-link {{ request()->is('prediksi') ? 'active' : '' }}">
+    <i class="bi bi-graph-up-arrow"></i> Prediksi
+</a>
         </nav>
 
         <div class="sidebar-footer">
@@ -510,15 +513,22 @@
     </aside>
 
     <div class="main-area">
-        <header class="topbar">
-            <span class="topbar-title">
-                @if(request()->is('dashboard'))      Dashboard
-                @elseif(request()->is('barang*'))    Manajemen Produk
-                @elseif(request()->is('transaksi*')) Transaksi
-                @elseif(request()->is('laporan'))    Laporan &amp; Prediksi Stok
-                @else Toko Aneka Jaya
-                @endif
-            </span>
+    <header class="topbar">
+    <span class="topbar-title">
+        @if(request()->is('dashboard'))
+            Dashboard
+        @elseif(request()->is('barang*'))
+            Manajemen Produk
+        @elseif(request()->is('transaksi*'))
+            Transaksi
+        @elseif(request()->is('laporan'))
+            Laporan & Prediksi Stok
+        @elseif(request()->is('prediksi'))
+            Prediksi Stok
+        @else
+            Toko Aneka Jaya
+        @endif
+    </span>
             <div class="topbar-right">
                 <div class="greeting-text">
                     <div class="name">Halo, {{ auth()->user()->name }} 👋</div>

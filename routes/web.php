@@ -5,6 +5,7 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\PrediksiController;
 use App\Models\Transaksi;
 use Carbon\Carbon;
 
@@ -123,5 +124,7 @@ Route::middleware('auth')->group(function () {
 
     /* ================== LAPORAN ================== */
    Route::get('/laporan', [LaporanController::class, 'index']);
+
+   Route::get('/prediksi', [PrediksiController::class, 'index']); 
 
 });

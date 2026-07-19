@@ -57,10 +57,14 @@
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Satuan</label>
-                    <input type="text" class="form-control" value="dus" readonly>
-                    <input type="hidden" name="satuan" value="dus">
-                </div>
+    <label class="form-label">Satuan</label>
+    <select name="satuan" class="form-select" required>
+        <option value="dus">Dus</option>
+        <option value="renceng">Renceng</option>
+        <option value="box">Box</option>
+        <option value="pack">Pack</option>
+    </select>
+</div>
 
             </div>
 

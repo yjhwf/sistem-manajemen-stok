@@ -39,14 +39,12 @@ class BarangController extends Controller
         return view('barang.index', compact('barangs'));
     }
 
-    // 🔥 TAMBAHAN EDIT
     public function edit($id)
     {
         $barang = Transaksi::findOrFail($id);
         return view('barang.edit', compact('barang'));
     }
 
-    // 🔥 TAMBAHAN UPDATE
     public function update(Request $request, $id)
     {
         $barang = Transaksi::findOrFail($id);
@@ -61,7 +59,6 @@ class BarangController extends Controller
 
     public function destroy($nama)
     {
-        // hapus semua transaksi berdasarkan nama produk
         Transaksi::where('nama_produk', $nama)->delete();
 
         return redirect('/barang');

@@ -59,13 +59,17 @@
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Jumlah</label>
-                    <div class="d-flex gap-2">
-                        <input type="number" name="jumlah" class="form-control" placeholder="0" required>
-                        <input type="text" class="form-control" value="dus" readonly style="max-width:70px; text-align:center;">
-                        <input type="hidden" name="satuan" value="dus">
-                    </div>
-                </div>
+    <label class="form-label">Jumlah</label>
+    <div class="d-flex gap-2">
+        <input type="number" name="jumlah" class="form-control" placeholder="0" required>
+        <select name="satuan" class="form-select" required style="max-width:110px;">
+            <option value="dus">Dus</option>
+            <option value="renceng">Renceng</option>
+            <option value="box">Box</option>
+            <option value="pack">Pack</option>
+        </select>
+    </div>
+</div>
 
                 <div class="mb-3">
                     <label class="form-label">Exp Date</label>
@@ -81,7 +85,7 @@
                 <i class="bi bi-check-lg me-1"></i> Simpan
             </button>
             <a href="/transaksi" class="btn btn-secondary px-4">Batal</a>
-        </div>
+        </div> 
 
     </form>
 
